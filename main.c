@@ -1,10 +1,6 @@
 #include <stdio.h>
 
 int main() {
-    printf("Hello, World!\n");
-    printf("Hello, new slide.\n");
-    printf("Hello, new slide.\n");
-    printf("Hello, new slide.\n");
-    printf("Hello, new slide.\n");
+    printf("Câu lệnh này in ra màn hình đoạn text nằm trong nháy kép.\n");
     return 0;
 }
