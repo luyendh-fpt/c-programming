@@ -1,30 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int doicho2so(int a, int b) {
-    printf("Giá trị của x được truyền vào là %d\n", a);
-    printf("Giá trị của y được truyền vào là %d\n", b);
-    int tmp = a;
-    a = b;
-    b = tmp;
+int doicho2so(int *pointerOfA, int *pointerOfB) {
+    printf("Giá trị của x được truyền vào là %d\n", *pointerOfA);
+    printf("Giá trị của y được truyền vào là %d\n", *pointerOfB);
+    int tmp = *pointerOfA;
+    *pointerOfA = *pointerOfB;
+    *pointerOfB = tmp;
     printf("\n");
-    printf("Giá trị của x sau khi đổi chỗ là %d\n", a);
-    printf("Giá trị của y sau khi đổi chỗ là %d\n", b);
+    printf("Giá trị của x sau khi đổi chỗ là %d\n", *pointerOfA);
+    printf("Giá trị của y sau khi đổi chỗ là %d\n", *pointerOfB);
 }
 
 int main() {
-    int *pointerOfa; // khai báo.
-    int a = 10;
-    int b = 20;
-    pointerOfa = &a; // gán địa chỉ của biến a cho con trỏ.
-
-    printf("Địa chỉ của a là %d\n", &a);
-    printf("Địa chỉ của con trỏ là %d\n", pointerOfa);
-    printf("Giá trị của a là %d\n", a);
-    printf("Giá trị của con trỏ là %d\n", *pointerOfa);
-
-    pointerOfa = &b;
-    printf("Địa chỉ của con trỏ là %d\n", pointerOfa);
-    printf("Giá trị của con trỏ là %d\n", *pointerOfa);
+    int a, b;
+    printf("Vui lòng nhập a: ");
+    scanf("%d", &a);
+    printf("Vui lòng nhập b: ");
+    scanf("%d", &b);
+    if(a > b){
+        doicho2so(&a, &b);
+    }
+    printf("Kết quả cuối cùng:\n");
+    printf("a = %d\n", a);
+    printf("b = %d", b);
     return 0;
 }
