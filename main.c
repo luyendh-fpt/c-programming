@@ -1,30 +1,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-float tinhDiemTrungBinh(int diemCacMon[], int tongSoMon);
-
-int main() {
-    int tongSoMon;
-    printf("Vui lòng nhập tổng số môn:");
-    scanf("%d", &tongSoMon);
-    int diemCacMon[tongSoMon];
-
-    for (int i = 0; i < tongSoMon; i++) {
-        printf("Vui lòng nhập giá trị cho phần tử thứ %d\n", i + 1);
-        scanf("%d", &diemCacMon[i]);
-    }
-    printf("In các phần tử trong mảng\n");
-    for (int j = 0; j < tongSoMon; ++j) {
-        printf("Giá trị của phần tử thứ %d là %d\n", j + 1, diemCacMon[j]);
-    }
-    printf("Điểm trung bình là %.2f", tinhDiemTrungBinh(diemCacMon, tongSoMon));
-    return 0;
+int doicho2so(int a, int b) {
+    printf("Giá trị của x được truyền vào là %d\n", a);
+    printf("Giá trị của y được truyền vào là %d\n", b);
+    int tmp = a;
+    a = b;
+    b = tmp;
+    printf("\n");
+    printf("Giá trị của x sau khi đổi chỗ là %d\n", a);
+    printf("Giá trị của y sau khi đổi chỗ là %d\n", b);
 }
 
-float tinhDiemTrungBinh(int diemCacMon[], int tongSoMon){
-    int tongDiem = 0;
-    for (int i = 0; i < tongSoMon; ++i) {
-        tongDiem += diemCacMon[i];
-    }
-    return (float) tongDiem / tongSoMon;
+int main() {
+    int *pointerOfa; // khai báo.
+    int a = 10;
+    int b = 20;
+    pointerOfa = &a; // gán địa chỉ của biến a cho con trỏ.
+
+    printf("Địa chỉ của a là %d\n", &a);
+    printf("Địa chỉ của con trỏ là %d\n", pointerOfa);
+    printf("Giá trị của a là %d\n", a);
+    printf("Giá trị của con trỏ là %d\n", *pointerOfa);
+
+    pointerOfa = &b;
+    printf("Địa chỉ của con trỏ là %d\n", pointerOfa);
+    printf("Giá trị của con trỏ là %d\n", *pointerOfa);
+    return 0;
 }
