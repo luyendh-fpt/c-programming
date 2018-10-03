@@ -14,7 +14,7 @@ void hienThiMang() {
 int main() {
     hienThiMang();
     int tmp;
-    for (int i = 0; i < 8; ++i) {
+    for (int i = 0; i < 7; ++i) {
         printf("Tại i = %d, giá trị của arrNumber tại index %d là arrNumber[%d] = %d\n", i, i, i, arrNumber[i]);
         for (int j = i + 1; j < 8; ++j) {
             printf("So sánh %d với %d\n", arrNumber[i], arrNumber[j]);
