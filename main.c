@@ -1,28 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int doicho2so(int *pointerOfA, int *pointerOfB) {
-    printf("Giá trị của x được truyền vào là %d\n", *pointerOfA);
-    printf("Giá trị của y được truyền vào là %d\n", *pointerOfB);
-    int tmp = *pointerOfA;
-    *pointerOfA = *pointerOfB;
-    *pointerOfB = tmp;
+int arrNumber[] = {8, 2, 3, 1, 5, 7, 9, 0};
+
+void hienThiMang() {
+    printf("Hiển thị các phần tử trong mảng\n");
+    for (int i = 0; i < 8; ++i) {
+        printf("%d ", arrNumber[i]);
+    }
     printf("\n");
-    printf("Giá trị của x sau khi đổi chỗ là %d\n", *pointerOfA);
-    printf("Giá trị của y sau khi đổi chỗ là %d\n", *pointerOfB);
 }
 
 int main() {
-    int a, b;
-    printf("Vui lòng nhập a: ");
-    scanf("%d", &a);
-    printf("Vui lòng nhập b: ");
-    scanf("%d", &b);
-    if(a > b){
-        doicho2so(&a, &b);
+    hienThiMang();
+    int tmp;
+    for (int i = 0; i < 8; ++i) {
+        printf("Tại i = %d, giá trị của arrNumber tại index %d là arrNumber[%d] = %d\n", i, i, i, arrNumber[i]);
+        for (int j = i + 1; j < 8; ++j) {
+            printf("So sánh %d với %d\n", arrNumber[i], arrNumber[j]);
+            if (arrNumber[i] > arrNumber[j]) {
+                printf("Vì %d > %d nên thực hiện trao đổi giá trị.\n", arrNumber[i], arrNumber[j]);
+                tmp = arrNumber[i];
+                arrNumber[i] = arrNumber[j];
+                arrNumber[j] = tmp;
+            }else{
+                printf("Không thực hiện hoán đổi vị trí.\n");
+            }
+            hienThiMang();
+        }
     }
-    printf("Kết quả cuối cùng:\n");
-    printf("a = %d\n", a);
-    printf("b = %d", b);
     return 0;
 }
