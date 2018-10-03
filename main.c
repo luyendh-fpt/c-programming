@@ -1,33 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int arrNumber[] = {8, 2, 3, 1, 5, 7, 9, 0};
-
-void hienThiMang() {
-    printf("Hiển thị các phần tử trong mảng\n");
-    for (int i = 0; i < 8; ++i) {
-        printf("%d ", arrNumber[i]);
-    }
-    printf("\n");
-}
-
 int main() {
-    hienThiMang();
-    int tmp;
-    for (int i = 0; i < 7; ++i) {
-        printf("Tại i = %d, giá trị của arrNumber tại index %d là arrNumber[%d] = %d\n", i, i, i, arrNumber[i]);
-        for (int j = i + 1; j < 8; ++j) {
-            printf("So sánh %d với %d\n", arrNumber[i], arrNumber[j]);
-            if (arrNumber[i] > arrNumber[j]) {
-                printf("Vì %d > %d nên thực hiện trao đổi giá trị.\n", arrNumber[i], arrNumber[j]);
-                tmp = arrNumber[i];
-                arrNumber[i] = arrNumber[j];
-                arrNumber[j] = tmp;
-            }else{
-                printf("Không thực hiện hoán đổi vị trí.\n");
-            }
-            hienThiMang();
-        }
-    }
+    int a = 10;
+    // khai báo biến con trỏ tên là pointe
+    // và có thể trỏ đến các biến số nguyên.
+    int *pointer;
+    pointer = &a; // gán địa chỉ của biến a cho con trỏ.
+    printf("Giá trị của a là %d\n", a); // In ra giá trị của a.
+    printf("Giá trị của con trỏ là %d\n", *pointer); // In 'giá trị con trỏ'
+    printf("Địa chỉ của con trỏ là %d\n", pointer); // In ra địa chỉ con trỏ.
+    printf("Địa chỉ của a là %d\n", &a); // In ra địa chỉ biến a.
     return 0;
 }
