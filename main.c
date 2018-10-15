@@ -1,52 +1,73 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <memory.h>
 
 int main() {
-    // Yêu cầu người dùng nhập số lượng phần tử đầu tiên.
-    int sizeOfArray;
-    printf("Vui lòng nhập số lượng phần tử: ");
-    scanf("%d", &sizeOfArray);
-    // Cấp phát bộ nhớ cho con trỏ theo số lượng phần tử người dùng nhập vào.
-    int *pointer = (int *) malloc(sizeOfArray * sizeof(int));
-    // kiểm tra lại xem con trỏ có thật sự được cấp phát bộ nhớ ko.
-    if (pointer == NULL) {
-        printf("Không đủ bộ nhớ");
-        return 0;
+    // 1. Yêu cầu nhập tên.
+    // 2. In ra độ dài của tên.
+    // 3. Yêu cầu nhập họ.
+    // 4. In ra độ dài của họ.
+    // 5. Nối tên vào họ. In ra kết qủa sau khi nối.
+
+    // Khai báo mảng 20 ký tự chứa họ người dùng.
+    char ho[20];
+    printf("Vui lòng nhập họ: \n");
+    // fgets(nhập vào đâu, nhập bao nhiêu, lấy từ đâu);
+    fgets(ho, sizeof(ho) * sizeof(char), stdin);
+    // fflush(sdtin);
+    // Tìm trong họ ký tự xuống dòng strchr(ho, '\n').
+//    if (!strchr(ho, '\n')) {
+//        do {
+//            char charInStdin = fgetc(stdin);
+//            printf("'%c'\n", charInStdin);
+//            if(charInStdin != '\n'){
+//                printf("Không phải \\n\n");
+//            }else{
+//                printf("Tìm thấy \\n\n");
+//                break;
+//            }
+//        }while(1);
+//    }
+    if (!strchr(ho, '\n')) {
+        while (fgetc(stdin) != '\n');
     }
-    // Yêu cầu người dùng nhập giá trị cho các phần tử trong mảng.
-    int i;
-    for (i = 0; i < sizeOfArray; ++i) {
-        printf("Nhập gía trị cho phần tử thứ %d: ", i + 1);
-        scanf("%d", pointer + i);
-//        pointer++;
+
+    // in ra độ dài của họ => strlen
+    // Tính ra độ dài của họ vừa nhập.
+    int doDaiCuaHo = strlen(ho);
+    printf("Độ dài của họ là %d\n", doDaiCuaHo);
+
+    // Remove dấu xuống dòng nằm trong họ.
+    ho[strlen(ho) - 1] = ' ';
+
+    char ten[20];
+    printf("Vui lòng nhập tên: \n");
+    fgets(ten, sizeof(ten) * sizeof(char), stdin);
+//    if (!strchr(ho, '\n')) {
+//        do {
+//            char charInStdin = fgetc(stdin);
+//            printf("'%c'\n", charInStdin);
+//            if(charInStdin != '\n'){
+//                printf("Không phải \\n\n");
+//            }else{
+//                printf("Tìm thấy \\n\n");
+//                break;
+//            }
+//        }while(1);
+//    }
+    if (!strchr(ho, '\n')) {
+        while (fgetc(stdin) != '\n');
     }
-    // Yêu cầu người dùng nhập số lượng phần tử muốn cấp phát thêm.
-    printf("Nhập số lượng bạn muốn thêm: ");
-    int additionSize;
-    scanf("%d", &additionSize);
-    // Cấp phát thêm bộ nhờ cho con trỏ theo số lượng người dùng nhập vào.
-    pointer = (int *) realloc(pointer, additionSize * sizeof(int));
-    // kiểm tra lại xem con trỏ có thật sự được cấp phát bộ nhớ ko.
-    if (pointer == NULL) {
-        printf("Không đủ bộ nhớ.");
-        return 0;
-    }
-    // Cập nhật số lượng phần tử trong mảng.
-    sizeOfArray += additionSize;
-    // Yêu cầu người dùng nhập các phần tử thêm.
-    for (i; i < sizeOfArray; ++i) {
-        printf("Nhập gía trị cho phần tử thứ %d: ", i + 1);
-        scanf("%d", pointer + i);
-//        pointer++;
-    }
-    // In ra các phần tử vừa nhập.
-//    // Di chuyển con trỏ lùi lại một ô nhớ.
-//    pointer--;
-    for (int j = 0; j < sizeOfArray; ++j) {
-        printf("Gía trị tại phần tử thứ %d là %d.\n", j + 1, *(pointer + j));
-//        pointer--;
-    }
-    // Giải phóng bộ nhớ.
-    free(pointer);
+    int doDaiCuaTen = strlen(ten);
+    printf("Độ dài của họ là %d\n", doDaiCuaTen);
+
+    // Tạo ra một mảng ký tự mới có size có thể chứa được cả họ và tên.
+    char hovaten[doDaiCuaHo + doDaiCuaTen];
+    // Copy thông tin từ mảng họ vào mảng mới
+    strcpy(hovaten, ho);
+    // Nối tên vào mảng mới
+    strcat(hovaten, ten);
+    // In ra.
+    printf("Họ và tên vừa nhập: %s", hovaten);
     return 0;
 }
